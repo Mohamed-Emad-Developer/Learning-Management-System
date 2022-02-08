@@ -1,0 +1,49 @@
+﻿@model List<Course>
+@{
+    List<Instructor> instructors = ViewBag.instructors;
+    string id = ViewData["InstructorID"].ToString();
+}
+@{
+
+}
+<div class="container">
+    <div class=row>
+        <div class="col-sm-6">
+            <div class="card text-center" style="width: 18rem;">
+                <i class="fas fa-chalkboard-teacher mt-2" style="font-size:100px"></i>
+
+                <div class="card-body">
+
+                    <a class="btn btn-danger" href="/Instructor/InstructorInfo/@ViewData["InstructorID"]">yourInfo</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1 class="text-center text-muted pb-3">your courses</h1>
+            <table class="table table-bordered text-center">
+                <thead class="bg-danger text-white">
+                    <tr>
+                        <th scope="col">CourseName</th>
+                        <th scope="col">Degree</th>
+                        <th scope="col">MinDegree</th>
+                        <th scope="col">DeptName</th>
+                        <th scope="col">Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var crs in Model)
+                    {
+                        <tr>
+                            <td>@crs.Name</td>
+                            <td>@crs.Degree</td>
+                            <td>@crs.MinDegree</td>
+                            <td>@crs.Dep.Name</td>
+                            <td><a href="/Instructor/Show/@crs.Id">@crs.StudentCourses.ToList().Count()</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

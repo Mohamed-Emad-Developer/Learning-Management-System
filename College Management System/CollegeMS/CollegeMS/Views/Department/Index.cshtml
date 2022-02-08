@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CollegeMS.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All College Departments</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New Department  <i class="fas fa-plus ms-2"></i></a>
+</p>
+<table class="table table-bordered">
+    <thead class="bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager)
+            </th>
+            <th>Show All Instructors In Department</th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manager.User.Name)
+                </td>
+                <td class="text-center"><input type="button" onclick="AjaxCall(@item.Id)" value="Show" class="btn btn-danger" /></td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="card text-center">
+    <div class="card-header">
+        Show Instructors
+    </div>
+    <div class="card-body" id="div1">
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+@section Scripts{
+<script>
+    function AjaxCall(val2){
+        var id=val2
+        console.log(id);
+        $.ajax(
+            {
+                url  : "/Instructor/getInstructor",
+                data :{"id":id},
+                success: function(result){
+                            $("#div1").html(result);
+                    }
+            }
+            );
+         }
+</script>
+}

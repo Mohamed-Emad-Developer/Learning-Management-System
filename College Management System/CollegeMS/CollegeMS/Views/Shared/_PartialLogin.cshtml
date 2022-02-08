@@ -1,0 +1,23 @@
+﻿
+<ul class="navbar-nav ">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+        <li class="nav-item">
+            <a class="nav-link  text-white" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-user"></i> @user.Name</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  text-white" asp-area="" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link  text-white" asp-area="" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+    }
+
+
+</ul>

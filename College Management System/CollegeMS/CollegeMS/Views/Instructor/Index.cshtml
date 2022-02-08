@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CollegeMS.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Instructors";
+    int i = 1;
+}
+
+<h1>All Instructor in College</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Add New Instructor <i class="fas fa-plus ms-2"></i></a>
+</p>
+<table class="table table-bordered">
+    <thead class="bg-success text-white">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dep.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Address)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete","Instructor", new {  id=item.Id  },new{@class="delete-btn"})
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

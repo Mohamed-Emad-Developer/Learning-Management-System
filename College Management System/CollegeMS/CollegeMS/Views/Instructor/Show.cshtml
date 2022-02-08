@@ -1,0 +1,26 @@
+﻿@using CollegeMS.viewModel
+@model List<StudentCourseModel>
+<table class="table table-bordered text-center">
+    <thead class="text-white bg-danger">
+        <tr>
+            <th scope="col">StudentName</th>
+            <th scope="col">Level</th>
+            <th scope="col">Degree</th>
+            <th scope="col">SetDegree</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Std in Model)
+        {
+            <tr>
+                <td>@Std.Name</td>
+                <td>@Std.Level</td>
+                <td>@Std.degree</td>
+                <td><a href="/Instructor/SetDegree/@Std.ID?Crs_ID=@Std.Crs_ID">degree</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-outline-danger" href="/Instructor/details/@ViewData["InstructorID"]">back to courses</a>
+

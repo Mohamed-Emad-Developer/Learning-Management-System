@@ -1,0 +1,41 @@
+﻿@using CollegeMS.viewModel
+@model InstructorInfoViewModel
+
+<form method="post" asp-action="EditInstructorInfo" asp-controller="Instructor" asp-route-id=@Model.id>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span class="text-danger" asp-validation-for="Address"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Gender" class="form-label"></label>
+        <input asp-for="Gender" class="form-control" />
+        <span class="text-danger" asp-validation-for="Gender"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span class="text-danger" asp-validation-for="Age"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" />
+        <span class="text-danger" asp-validation-for="Image"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <input type="submit" value="Edit" class="btn btn-danger" />
+
+
+    <a class="btn btn-outline-danger" href="/Instructor/InstructorInfo/@Model.id">cancel</a>
+
+</form>

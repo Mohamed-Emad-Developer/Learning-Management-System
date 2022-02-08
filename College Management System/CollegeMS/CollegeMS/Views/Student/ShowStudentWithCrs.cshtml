@@ -1,0 +1,16 @@
+﻿@model List<StudentCourses>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Degree</th>
+    </tr>
+  </thead>
+    @foreach (var item in Model)
+    {
+       <tr>
+      <td>@item.Course.Name</td>
+      <td>@item.Degree</td>
+    </tr>
+   }
+</table>

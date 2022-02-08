@@ -1,0 +1,8 @@
+﻿@model List<ApplicationUser>
+<a asp-action="Create" asp-controller="Admin">Create Admin</a>
+<ul>
+    @foreach (var user in Model)
+   {
+       <li>@user.Email</li>
+   }
+</ul>

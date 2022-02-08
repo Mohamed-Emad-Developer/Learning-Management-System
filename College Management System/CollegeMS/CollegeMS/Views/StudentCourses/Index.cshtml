@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CollegeMS.Models.StudentCourses>
+
+@{
+    ViewData["Title"] = "StudentCourses";
+}
+
+<h1>All students in courses</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Assign Student to Course <i class="fas fa-plus ms-2"></i></a>
+</p>
+<table class="table table-bordered">
+    <thead class="bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.User.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Degree)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.User.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Degree)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Drop","StudentCourses", new {  studentId=item.StudentId, courseId = item.CourseId   },new{@class="delete-btn"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

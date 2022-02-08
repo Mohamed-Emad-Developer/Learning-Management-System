@@ -1,0 +1,16 @@
+﻿@model StudentCourses
+<form method="post" asp-action="SaveDegree" asp-controller="Instructor">
+
+    <div class="mb-3">
+        <input type="hidden" asp-for="StudentId" class="form-control" />
+        <input type="hidden" asp-for="CourseId" class="form-control" />
+        <label asp-for="Degree" class="form-label"></label>
+        <input asp-for="Degree" class="form-control" />
+        <span class="text-danger" asp-validation-for="Degree"></span>
+
+    </div>
+    <input type="submit" value="Save" class="btn btn-danger" />
+
+    <a class="btn btn-outline-danger" href="/Instructor/Show/@Model.CourseId">cancel</a>
+
+</form>
